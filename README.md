@@ -1,8 +1,3 @@
-Evaluacion 3 Back End   C2
-Integrantes
-            Bryan Martinez Ruiz
-            Hans Vidal Rivera
-
 
 
 Requisitos del software
