@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Menú del Sistema{% endblock %}
+
+{% block content %}
+
+<div class="container d-flex flex-column justify-content-center align-items-center vh-100">
+    <h2 class="titulo-personalizado mb-4" style="color: red;">Sistema de Gestión</h2>
+
+    <a href="{% url 'clientes:seleccionar_crud_cliente' %}" class="btn btn-primary btn-lg mb-3 w-50">
+        Gestión de Clientes
+    </a>
+
+    <a href="{% url 'inventario:seleccionar_crud_inventario' %}" class="btn btn-secondary btn-lg w-50 color-verde">
+        Gestión de Inventario
+    </a>
+</div>
+
+{% endblock %}
+

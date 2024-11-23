@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}Menú de Inventario{% endblock %}
+{% block content %}
+
+
+<div class="form-container">
+    <h2>Seleccione una acción</h2>
+    <p>Elija una de las siguientes acciones para gestionar el Inventario:</p>
+    
+    <div class="d-flex justify-content-around mt-4">
+        <a href="{% url 'inventario:crear_extintor' %}" class="btn btn-success">Crear Item</a>
+       
+        <a href="{% url 'inventario:inventario_home' %}" class="btn btn-primary">Ver Items (Permite elminar y editar datos)</a>
+       
+    </div>
+</div>
+
+
+{% endblock %}

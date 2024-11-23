@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Extintor{% endblock %}
+
+{% block content %}
+
+
+<div class="container mt-4">
+    <h1 class="text-center" style="color: red;" >Nuestros Productos</h1>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <img src="{% static 'images/extintorA.png' %}" height="400px" class="card-img-top" alt="Producto 1">
+                <div class="card-body">
+                    <h5 class="card-title">Extintor tipo A</h5>
+                    <p class="card-text">$10.00</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="{% static 'images/extintorK.png' %}" height="400px"  class="card-img-top" alt="Producto 2">
+                <div class="card-body">
+                    <h5 class="card-title">Extintor tipo K</h5>
+                    <p class="card-text">$1500</p>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="{% static 'images/extintorD.png' %}" height="400px"  class="card-img-top" alt="Producto 3">
+                <div class="card-body">
+                    <h5 class="card-title">Extintor tipo D</h5>
+                    <p class="card-text">$30.00</p>
+                    
+                </div>
+            </div>
+        </div>
+        <p></p>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="{% static 'images/extintorMini.png' %}" height="400px"  class="card-img-top" alt="Producto 3">
+                <div class="card-body">
+                    <h5 class="card-title">Extintor 1kg para Vehiculos</h5>
+                    <p class="card-text">$30.00</p>
+                    
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+{% endblock %}

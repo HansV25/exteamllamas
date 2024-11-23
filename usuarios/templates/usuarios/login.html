@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Iniciar Sesión{% endblock %}
+
+{% block content %}
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert {% if 'error' in message.tags %}alert-danger{% else %}alert-success{% endif %}" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+
+
+<div class="container mt-4 form-container">
+    <h2>Iniciar Sesión</h2>
+    <form method="post">
+        {% csrf_token %}
+    <div class="form-group">
+        <label>Nombre de usuario:</label>
+        <input type="text" name="username" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label>Contraseña:</label>
+        <input type="password" name="password" class="form-control" required>
+    </div>
+        <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+    </form>
+</div>
+
+{% endblock %}

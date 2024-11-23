@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Menú de Clientes{% endblock %}
+{% block content %}
+
+
+<div class="form-container">
+    <h2>Seleccione una acción</h2>
+    <p>Elija una de las siguientes acciones para gestionar los clientes:</p>
+    
+    <div class="d-flex justify-content-around mt-4">
+        <a href="{% url 'clientes:crear_cliente' %}" class="btn btn-success">Crear Cliente</a>
+       
+        <a href="{% url 'clientes:lista_clientes' %}" class="btn btn-primary">Ver Clientes (Permite elminar y editar datos)</a>
+       
+    </div>
+</div>
+
+
+
+
+
+
+
+
+{% endblock %}

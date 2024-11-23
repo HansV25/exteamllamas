@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Mi perfil{% endblock %}
+
+{% block content %}
+
+<div class="container">
+ 
+    <ul class="list-group">
+
+        <h2 class="list-group-item">Perfil de {{ perfil.user.username }}</h2>
+
+        <li class="list-group-item"><strong>Rol:</strong> {{ perfil.rol }}</li>
+        
+        <li class="list-group-item">
+            {% if perfil.foto %}
+                <img src="{{ perfil.foto.url }}" alt="Foto de perfil" class="img-thumbnail" width="150">
+            {% else %}
+                No se ha subido una foto de perfil.
+            {% endif %}
+        </li>
+    </ul>
+</div>
+
+
+{% endblock %}

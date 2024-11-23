@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}{{ extintor.nombre }}{% endblock %}
+{% block content %}
+<div class="container mt-4 form-container">
+    <h2>Detalles de {{ extintor.nombre }}</h2>
+    <hr>
+    <p><strong>Nombre:</strong> {{ extintor.nombre }}</p>
+    <p><strong>Tipo:</strong> {{ extintor.tipo }}</p>
+    <p><strong>Cantidad:</strong> {{ extintor.cantidad }}</p>
+
+
+    {% if request.user.is_authenticated and request.user.perfil.rol == 'administrador' or request.user.perfil.rol == 'tecnico' %}
+        <a href="{% url 'inventario:editar_extintor' extintor.pk %}" class="btn btn-primary">Editar item</a>
+    {% endif %}
+    <a href="{% url 'inventario:inventario_home' %}" class="btn btn-link">Volver a la lista de items</a>
+</div>
+{% endblock %}

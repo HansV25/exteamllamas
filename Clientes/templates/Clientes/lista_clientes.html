@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block title %}Clientes{% endblock %}
+{% block content %}
+
+
+
+<div class="container mt-4 form-container">
+
+    {% if messages %}
+        {% for message in messages %}
+            {% if 'cliente' in message.tags %}
+                <div class="alert alert-success" role="alert">
+                    {{ message }}
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+
+
+    <h2>Lista de Clientes</h2>
+    {% if request.user.is_authenticated %}
+        {% if request.user.perfil.rol == 'tecnico' or request.user.perfil.rol == 'administrador' %}
+            <a href="{% url 'clientes:crear_cliente' %}" class="btn btn-success mb-3">Crear Cliente</a>
+            <a href="{% url 'clientes:seleccionar_crud_cliente' %}" class="btn btn-info">Volver a la Gestión de Clientes</a>
+        {% endif %}
+    {% endif %}
+    
+    {% for cliente in clientes %}
+        <div class="card mb-3 caja-cliente">
+            <div class="card-body">
+                <h5 class="card-title">{{ cliente.nombre }}</h5>
+                <p class="card-text">
+                    Dirección: {{ cliente.direccion }} <br>
+                    Teléfono: {{ cliente.telefono }} <br>
+                    Email: {{ cliente.email }}
+
+                   
+
+                    {% if user.perfil.rol == 'administrador' %}
+                    <div class="container mt-4">
+                        <form method="post" action="{% url 'clientes:eliminar_cliente' cliente.pk %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                        </form>
+                    </div>
+                    {% endif %}
+                </p>
+                <a href="{% url 'clientes:detalle_cliente' cliente.pk %}" class="btn btn-primary">Ver Detalles</a>
+            </div>
+        </div>
+    {% empty %}
+        <p>No hay clientes disponibles.</p>
+    {% endfor %}
+</div>
+{% endblock %}

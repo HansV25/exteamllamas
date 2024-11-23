@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Agregar Item{% endblock %}
+{% block content %}
+<div class="container mt-4 form-container">
+    <h2>Agregar Nuevo Extintor</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+
+        <div class="form-group">
+            <label for="id_nombre">Nombre:</label>
+            {{ form.nombre.errors }}
+            {{ form.nombre }}
+        </div>
+
+        <div class="form-group">
+            <label for="id_tipo">Tipo:</label>
+            {{ form.tipo.errors }}
+            {{ form.tipo }}
+        </div>
+
+        <div class="form-group">
+            <label for="id_cantidad">Cantidad:</label>
+            {{ form.cantidad.errors }}
+            {{ form.cantidad }}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Guardar Item</button>
+    </form>
+</div>
+{% endblock %}
