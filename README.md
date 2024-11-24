@@ -4,7 +4,9 @@ Requisitos del software
     -python 3.11.0
     -pip
     -Visual studio code
-
+    -APPSERV
+    
+    
 Pasos para abrir y ejecutar el software
 
 1. Abre una nueva carpeta desde el Visual Studio Core.
@@ -18,27 +20,29 @@ Pasos para abrir y ejecutar el software
        python -m venv env
 
    En windows:
-   .\env\Scripts\activate
+   
+       .\env\Scripts\activate
 
    En linux / macOS
-   source env/bin/activate
+   
+       source env/bin/activate
 
-4. Instalar requirements.txt
+5. Instalar requirements.txt
 
         pip install -r requirements.txt
 
-5. Crear archivo .env para credenciales de la base de datos(o configurar directamente desde settings.py):
+6. Crear archivo .env para credenciales de la base de datos(o configurar directamente desde settings.py):
 
-6. Crear migraciones y migrar en tu base de datos mysql
+7. Crear migraciones y migrar en tu base de datos mysql
    
         python manage.py makemigrations
         python manage.py migrate
 
-7. Crear superusuario
+8. Crear superusuario
    
        python manage.py createsuperuser
 
-8. Ejecutar el servidor
+9. Ejecutar el servidor
    
        python manage.py runserver
 
