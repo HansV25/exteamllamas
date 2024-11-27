@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Menú de Pedidos{% endblock %}
+{% block content %}
+
+<div class="form-container">
+    <h2>Seleccione una acción</h2>
+    <p>Elija una de las siguientes acciones para gestionar los Pedidos:</p>
+    
+    <div class="d-flex justify-content-around mt-4">
+        <a href="{% url 'pedidos:crear_pedido' %}" class="btn btn-success">Crear Pedido</a>
+       
+        <a href="{% url 'pedidos:pedido_home' %}" class="btn btn-primary">Ver Pedidos (Permite eliminar y editar datos)</a>
+       
+    </div>
+</div>
+
+{% endblock %}

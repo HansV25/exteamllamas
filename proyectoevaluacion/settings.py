@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'inventario',
     'Clientes',
     'usuarios.apps.UsuariosConfig',
+    'pedidos',
 ]
 
 MIDDLEWARE = [
@@ -88,10 +89,14 @@ DATABASES = {
         'NAME': config('DB_NAME'),
         'USER': config('DB_USER'),
         'PASSWORD': config('DB_PASSWORD'),
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'HOST': config('DB_HOST', default='localhost'),
+        'PORT': config('DB_PORT', default='3306'),
     }
 }
+print("Base de datos:", DATABASES['default']['NAME'])
+print("DB_NAME:", config('DB_NAME'))
+print("DB_USER:", config('DB_USER'))
+
 
 
 # Password validation
