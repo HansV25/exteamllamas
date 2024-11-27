@@ -13,7 +13,7 @@ Pasos para abrir y ejecutar el software
 
 2. Desde la terminal, clonar el repositorio.
 
-        git clone https://github.com/port4folio/evaluacion-sumativa-3-grupo1488.git
+        git clone https://github.com/HansV25/exteamllamas.git
 
 3. Activar el entorno virtual
 
