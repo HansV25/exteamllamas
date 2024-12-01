@@ -21,6 +21,11 @@
         {% endif %}
     {% endif %}
     
+    <form method="get" class="mb-3">
+        <input type="text" name="q" class="form-control" placeholder="Buscar extintor..." value="{{ q }}">
+        <button type="submit" class="btn btn-primary mt-2">Buscar</button>
+    </form>
+
     {% for extintor in extintores %}
         <div class="card mb-3 caja-extintor">
             <div class="card-body">

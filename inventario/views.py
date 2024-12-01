@@ -5,7 +5,7 @@ from .models import Extintor
 from .forms import ExtintorForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-
+from django.db.models import Q
 
 # Create your views here.
 
@@ -20,8 +20,14 @@ def seleccionar_crud_inventario(request):
 #.......LISTA de Items..........
 @login_required
 def inventario_home(request):
-    extintores = Extintor.objects.all()
-    return render(request, 'inventario/inventario_home.html', {'extintores': extintores})
+    q = request.GET.get('q', '')
+    if q:
+        extintores = Extintor.objects.filter(
+            Q(nombre__icontains=q) | Q(tipo__icontains=q)
+        )
+    else:
+        extintores = Extintor.objects.all()
+    return render(request, 'inventario/inventario_home.html', {'extintores': extintores, 'q': q})
 
 #................vista para crear inventario...................
 @login_required

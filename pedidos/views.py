@@ -3,7 +3,7 @@ from .models import Pedido
 from .forms import PedidoForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-
+from django.db.models import Q
 
 # Create your views here.
 
@@ -17,7 +17,14 @@ def seleccionar_crud_pedido(request):
 
 @login_required
 def pedido_home(request):
-    pedidos = Pedido.objects.all()
+    query = request.GET.get('q')
+    if query:
+        pedidos = Pedido.objects.filter(
+            Q(cliente__nombre__icontains=query) |
+            Q(item_inventario__nombre__icontains=query)
+        )
+    else:
+        pedidos = Pedido.objects.all()
     return render(request, 'pedidos/pedido_home.html', {'pedidos': pedidos})
 
 # crear el pedido

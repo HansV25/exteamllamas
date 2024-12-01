@@ -16,7 +16,10 @@
         {% endfor %}
     {% endif %}
 
-
+    <form method="get" class="mb-3">
+        <input type="text" name="q" class="form-control" placeholder="Buscar cliente..." value="{{ q }}">
+        <button type="submit" class="btn btn-primary mt-2">Buscar</button>
+    </form>
 
     <h2>Lista de Clientes</h2>
     {% if request.user.is_authenticated %}

@@ -3,7 +3,7 @@ from .models import Cliente
 from .forms import ClienteForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-
+from django.db.models import Q
 # Create your views here.
 
 @login_required
@@ -16,9 +16,14 @@ def seleccionar_crud_cliente(request):
 
 @login_required
 def lista_clientes(request):
-    if request.user.perfil.rol in ['tecnico', 'administrador']:
-        clientes = Cliente.objects.all().order_by('-nombre')
-    return render(request, 'Clientes/lista_clientes.html', {'clientes': clientes})
+    q = request.GET.get('q', '')
+    if q:
+        clientes = Cliente.objects.filter(
+            Q(nombre__icontains=q) | Q(direccion__icontains=q) | Q(email__icontains=q) | Q(telefono__icontains=q)
+        )
+    else:
+        clientes = Cliente.objects.all()
+    return render(request, 'clientes/lista_clientes.html', {'clientes': clientes, 'q': q})
 
 @login_required
 def crear_cliente(request):

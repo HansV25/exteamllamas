@@ -21,6 +21,11 @@
         {% endif %}
     {% endif %}
     
+     <form method="get" action="{% url 'pedidos:pedido_home' %}" class="mb-3">
+        <input type="text" name="q" class="form-control" placeholder="Buscar pedidos...">
+        <button type="submit" class="btn btn-primary mt-2">Buscar</button>
+    </form>
+
     {% for pedido in pedidos %}
         <div class="card mb-3 caja-pedido">
             <div class="card-body">
