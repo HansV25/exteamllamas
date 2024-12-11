@@ -4,6 +4,8 @@ from .forms import RegistroForm
 from django.contrib.auth.decorators import login_required
 from .models import Perfil
 from django.contrib import messages
+from inventario.models import Extintor
+
 # Create your views here.
 
 #Index que se muestra en la url ''
@@ -61,6 +63,10 @@ def contacto(request):
 @login_required
 def seleccionar_aplicacion(request):
     if request.user.perfil.rol in ['administrador', 'tecnico']:
+        extintores_bajos = Extintor.objects.filter(cantidad__lt=10)
+        if extintores_bajos.exists():
+            mensajes = ", ".join([extintor.nombre for extintor in extintores_bajos])
+            messages.warning(request, f"Los siguientes productos en el Inventario tienen un stock bajo de 10 unidades: {mensajes}")
         return render(request, 'usuarios/seleccionar_aplicacion.html')
     else:
         return redirect('usuarios:index') 
